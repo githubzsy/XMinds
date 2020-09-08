@@ -1,10 +1,12 @@
 package com.zhoushiya.interview.IODemo.AIO;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
 import java.util.Random;
+import java.util.concurrent.Future;
 
 public class AIOClient {
     private static Integer PORT = 8888;
@@ -26,10 +28,18 @@ public class AIOClient {
         asyncSocketChannel.connect(new InetSocketAddress(IP_ADDRESS, PORT), this, new CompletionHandler<Void, AIOClient>() {
             @Override
             public void completed(Void result, AIOClient attachment) {
+                // 设置一个收发消息的循环体，持续与服务器通信
+                while (asyncSocketChannel.isOpen()) {
                     String[] operators = {"+", "-", "*", "/"};
                     Random random = new Random(System.currentTimeMillis());
                     String expression = random.nextInt(10) + operators[random.nextInt(4)] + (random.nextInt(10) + 1);
                     writeAndRead(expression);
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
             }
 
@@ -42,6 +52,7 @@ public class AIOClient {
 
     /**
      * 向服务端发送数据并且接收结果
+     *
      * @param message 文字信息
      */
     void writeAndRead(String message) {
@@ -51,18 +62,25 @@ public class AIOClient {
             asyncSocketChannel.read(byteBuffer).get();
             byteBuffer.flip();
             byte[] respByte = new byte[byteBuffer.remaining()];
-            byteBuffer.get(respByte); // 将缓冲区的数据放入到 byte数组中  
+            byteBuffer.get(respByte); // 将缓冲区的数据放入到 byte数组中
             System.out.println(new String(respByte, "utf-8").trim());
         } catch (Exception e) {
             e.printStackTrace();
+
+            if(e.getCause() instanceof IOException){
+                try {
+                    asyncSocketChannel.close();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
         }
+
     }
 
     public static void main(String[] args) throws Exception {
-        for (int i = 0; i < 10; i++) {
-            AIOClient myClient = new AIOClient();
-            myClient.connectAndWrite();
-        }
+        AIOClient myClient = new AIOClient();
+        myClient.connectAndWrite();
         // 暂停主线程，防止程序退出。PS，服务器中不需要这段代码
         Thread.sleep(Integer.MAX_VALUE);
     }

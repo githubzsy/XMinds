@@ -40,13 +40,16 @@ public class AIOServerHandler implements CompletionHandler<AsynchronousSocketCha
         asyncSocketChannel.read(byteBuffer, byteBuffer, new CompletionHandler<Integer, ByteBuffer>() {
             @Override
             public void completed(Integer resultSize, ByteBuffer attachment) {
-                //进行读取之后,重置标识位
-                attachment.flip();
-                //获取读取的数据
-                String resultData = new String(attachment.array()).trim();
-                System.out.println("Server -> " + "收到客户端的数据信息为:" + resultData);
-                String response = resultData + " = 算不出来 ";
-                write(asyncSocketChannel, response);
+                // 设置一个收发消息的循环体，持续与客户端通信
+                while (asyncSocketChannel.isOpen()) {
+                    //进行读取之后,重置标识位
+                    attachment.flip();
+                    //获取读取的数据
+                    String resultData = new String(attachment.array()).trim();
+                    System.out.println("Server -> " + "收到客户端的数据信息为:" + resultData);
+                    String response = resultData + " = 算不出来 ";
+                    write(asyncSocketChannel, response);
+                }
             }
 
             @Override
@@ -69,6 +72,13 @@ public class AIOServerHandler implements CompletionHandler<AsynchronousSocketCha
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+            if(e.getCause() instanceof IOException){
+                try {
+                    asyncSocketChannel.close();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
         }
     }
 
