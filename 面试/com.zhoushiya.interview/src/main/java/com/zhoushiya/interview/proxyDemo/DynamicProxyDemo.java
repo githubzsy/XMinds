@@ -40,7 +40,9 @@ public class DynamicProxyDemo {
         System.getProperties().setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
 
         ProxyHandler helloHandler = new ProxyHandler(new Hello());
-        HelloInterface proxyInstance = (HelloInterface) Proxy.newProxyInstance(Hello.class.getClassLoader(), Hello.class.getInterfaces(), helloHandler);
+        // 创建代理类实例
+        // HelloInterface proxyInstance = (HelloInterface) Proxy.newProxyInstance(Hello.class.getClassLoader(), Hello.class.getInterfaces(), helloHandler);
+        HelloInterface proxyInstance = (HelloInterface) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{HelloInterface.class}, helloHandler);
         proxyInstance.sayHello();
 
         ProxyHandler byeHandler = new ProxyHandler(new Bye());

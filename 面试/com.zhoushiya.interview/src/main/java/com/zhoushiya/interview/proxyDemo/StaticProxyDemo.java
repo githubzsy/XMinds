@@ -4,7 +4,7 @@ package com.zhoushiya.interview.proxyDemo;
  * 静态代理类
  */
 class HelloProxy implements HelloInterface {
-    private HelloInterface helloInterface = new Hello();
+    private HelloInterface helloInterface ;
 
     @Override
     public void sayHello() {
