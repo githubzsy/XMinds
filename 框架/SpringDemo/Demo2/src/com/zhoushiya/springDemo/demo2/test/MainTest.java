@@ -1,5 +1,8 @@
 package com.zhoushiya.springDemo.demo2.test;
 
+import com.alibaba.druid.pool.DruidDataSource;
+import com.zhoushiya.springDemo.demo2.autowire.Employee;
+import com.zhoushiya.springDemo.demo2.bean.Order;
 import com.zhoushiya.springDemo.demo2.collectionType.Book;
 import com.zhoushiya.springDemo.demo2.collectionType.Course;
 import com.zhoushiya.springDemo.demo2.collectionType.Student;
@@ -32,5 +35,28 @@ public class MainTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("bean3.xml");
         Course course = context.getBean("courseBeanFactory", Course.class);
         System.out.println(course);
+    }
+
+    @Test
+    public void testLifetime(){
+        // 可以直接使用ApplicationContext实现类ClassPathXmlApplicationContext
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean4.xml");
+        Order order = context.getBean("order", Order.class);
+        System.out.println("获取创建bean实例");
+        context.close();
+    }
+
+    @Test
+    public void testAutowire(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean5.xml");
+        Employee employee = context.getBean("employee", Employee.class);
+        System.out.println(employee);
+    }
+
+    @Test
+    public void testOuterProperties(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean6.xml");
+        DruidDataSource dataSource = context.getBean("dataSource", DruidDataSource.class);
+
     }
 }
