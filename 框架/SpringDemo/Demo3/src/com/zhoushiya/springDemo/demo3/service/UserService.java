@@ -3,7 +3,10 @@ package com.zhoushiya.springDemo.demo3.service;
 import com.zhoushiya.springDemo.demo3.dao.IUserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author zhoushiya
@@ -16,11 +19,19 @@ public class UserService implements IUserService {
     @Autowired
     //根据名称注入
     @Qualifier("userDao2")
+    IUserDao userDao2;
+
+    @Resource
     IUserDao userDao;
+
+    @Value("abc")
+    private String name;
 
     @Override
     public void add() {
         System.out.println("userService add...");
         userDao.add();
+        userDao2.add();
+        System.out.println(name);
     }
 }
