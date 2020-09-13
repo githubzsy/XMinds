@@ -5,5 +5,5 @@ package com.zhoushiya.springDemo.demo3.service;
  * @date 2020/9/13 14:00
  */
 public interface IUserService {
-    String hello();
+    void add();
 }

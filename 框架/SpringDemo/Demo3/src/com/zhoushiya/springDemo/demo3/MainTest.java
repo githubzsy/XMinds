@@ -15,6 +15,6 @@ public class MainTest {
     public void testComponent(){
         ApplicationContext context=new ClassPathXmlApplicationContext("bean1.xml");
         UserService userService = context.getBean("userService", UserService.class);
-        System.out.println(userService.hello());
+        userService.add();
     }
 }
