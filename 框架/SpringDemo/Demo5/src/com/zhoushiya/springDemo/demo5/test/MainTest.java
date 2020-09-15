@@ -1,6 +1,5 @@
 package com.zhoushiya.springDemo.demo5.test;
 
-import com.zhoushiya.springDemo.demo5.entity.Book;
 import com.zhoushiya.springDemo.demo5.service.IBookService;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,9 +13,12 @@ public class MainTest {
     public void testAdd(){
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("bean1.xml");
         IBookService bookService = classPathXmlApplicationContext.getBean("bookService", IBookService.class);
-        Book book=new Book();
-        book.setId(1);
-        book.setName("java书记");
-        bookService.add(book);
+//        Book book=new Book();
+//        book.setId(1);
+//        book.setName("java书记");
+//        bookService.add(book);
+
+        System.out.println(bookService.findCount());
+        System.out.println(bookService.findAll());
     }
 }
