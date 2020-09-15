@@ -18,6 +18,10 @@ public class MainTest {
 //        book.setName("java书记");
 //        bookService.add(book);
 
+//        List<Book> books=new LinkedList<>();
+//        books.add(new Book(4,"book 4"));
+//        books.add(new Book(5,"book 5"));
+//        bookService.add(books);
         System.out.println(bookService.findCount());
         System.out.println(bookService.findAll());
     }

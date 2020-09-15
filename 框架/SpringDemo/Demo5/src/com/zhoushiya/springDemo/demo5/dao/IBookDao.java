@@ -19,4 +19,6 @@ public interface IBookDao {
     Book findOne(int id);
 
     List<Book> findAll();
+
+    void add(List<Book> books);
 }

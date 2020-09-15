@@ -44,4 +44,9 @@ public class BookService implements IBookService {
     public List<Book> findAll() {
         return bookDao.findAll();
     }
+
+    @Override
+    public void add(List<Book> books) {
+        bookDao.add(books);
+    }
 }
