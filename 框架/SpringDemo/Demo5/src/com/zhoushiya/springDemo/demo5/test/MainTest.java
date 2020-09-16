@@ -1,5 +1,6 @@
 package com.zhoushiya.springDemo.demo5.test;
 
+import com.zhoushiya.springDemo.demo5.service.IAccountService;
 import com.zhoushiya.springDemo.demo5.service.IBookService;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -24,5 +25,12 @@ public class MainTest {
 //        bookService.add(books);
         System.out.println(bookService.findCount());
         System.out.println(bookService.findAll());
+    }
+
+    @Test
+    public void testTransfer(){
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("bean1.xml");
+        IAccountService accountService = classPathXmlApplicationContext.getBean("accountService", IAccountService.class);
+        accountService.transfer(1,2,100);
     }
 }
