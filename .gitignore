@@ -3,3 +3,5 @@ out
 target
 虚拟机/深入理解JVM.pdf
 .vs
+bin
+obj

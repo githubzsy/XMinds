@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,18 @@ namespace Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //app.Use(next =>
+            //{
+            //    Console.WriteLine("middleware 1");
+            //    return async c =>
+            //    {
+            //        await c.Response.WriteAsync("This is middleware 1 Start <br/>");
+            //        await next.Invoke(c);
+            //        await c.Response.WriteAsync("This is middleware 1 End <br/>");
+            //    };
+            //});
+
+
             // 请求过程中，经过session中间件的处理
             app.UseSession();
 
