@@ -1,5 +1,0 @@
-prop:
-  driverClass: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost/shop
-  userName: root
-  password: welcome

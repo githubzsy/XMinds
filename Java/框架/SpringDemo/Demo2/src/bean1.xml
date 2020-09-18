@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="student" class="com.zhoushiya.springDemo.demo2.collectionType.Student">
+        <property name="courses">
+            <!-- 数组类型属性注入 -->
+            <array value-type="java.lang.String">
+                <value>语文</value>
+                <value>数学</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+            </list>
+        </property>
+
+        <property name="maps">
+            <map>
+                <entry key="JAVA" value="java"></entry>
+                <entry key="PHP" value="php"></entry>
+                <entry key="JAVA" value="java2"></entry>
+            </map>
+        </property>
+
+        <property name="sets">
+            <set>
+                <value>1</value>
+                <value>2</value>
+            </set>
+        </property>
+
+        <!-- 集合中设置对象类型值 -->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="course1" class="com.zhoushiya.springDemo.demo2.collectionType.Course">
+        <property name="name" value="Spring5框架"></property>
+    </bean>
+
+    <bean id="course2" class="com.zhoushiya.springDemo.demo2.collectionType.Course">
+        <property name="name" value="Spring4框架"></property>
+    </bean>
+</beans>
