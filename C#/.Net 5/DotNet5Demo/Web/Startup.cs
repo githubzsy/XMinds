@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.MiddleWares;
 
 namespace Web
 {
@@ -30,19 +31,45 @@ namespace Web
 
             // 如何处理session
             services.AddSession();
+
+            services.AddDistributedRedisCache(options =>
+            {
+                // 别名
+                options.InstanceName = "Net5Redis";
+                options.Configuration = "127.0.0.1:6379,password=welcome";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.Use(next =>
+            {
+                Console.WriteLine("性能监控开始");
+                return async c =>
+                {
+                    DateTime start = DateTime.Now;
+                    await next.Invoke(c);
+                    Console.WriteLine($"{c.Request.Path}:访问时长:{(DateTime.Now - start).TotalMilliseconds}毫秒");
+                };
+            });
+
+            // 使用黑名单中间件，与下面效果相同
+            app.UseMiddleware<BlackListMiddleWare>();
+
             //app.Use(next =>
             //{
-            //    Console.WriteLine("middleware 1");
+            //    Console.WriteLine("黑名单监控开始");
             //    return async c =>
             //    {
-            //        await c.Response.WriteAsync("This is middleware 1 Start <br/>");
-            //        await next.Invoke(c);
-            //        await c.Response.WriteAsync("This is middleware 1 End <br/>");
+            //        if (c.Connection.RemoteIpAddress.ToString() == "127.0.0.1")
+            //        {
+            //            await c.Response.WriteAsync("you are in blacklist");
+            //        }
+            //        else
+            //        {
+            //            await next.Invoke(c);
+            //        }
             //    };
             //});
 
