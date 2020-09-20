@@ -1,9 +1,12 @@
 package com.zhoushiya.springDemo.demo5.test;
 
+import com.zhoushiya.springDemo.demo5.config.TXConfig;
 import com.zhoushiya.springDemo.demo5.service.IAccountService;
 import com.zhoushiya.springDemo.demo5.service.IBookService;
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericApplicationContext;
 
 /**
  * @author zhoushiya
@@ -34,5 +37,28 @@ public class MainTest {
         accountService.transfer(1,2,100);
     }
 
+    /**
+     * 测试完全注解开发
+     */
+    @Test
+    public void testConfig(){
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(TXConfig.class);
+        IAccountService accountService = annotationConfigApplicationContext.getBean("accountService", IAccountService.class);
+        accountService.transfer(1,2,100);
+    }
 
+    /**
+     * 函数式风格
+     */
+    @Test
+    public void textGenericApplicationContext(){
+        GenericApplicationContext context = new GenericApplicationContext();
+        //2.清空
+        context.refresh();
+        //3.注册bean
+        context.registerBean(UserLog.class,()->new UserLog());
+        //4.获取bean
+        UserLog bean = context.getBean("com.zhoushiya.springDemo.demo5.test.UserLog", UserLog.class);
+        System.out.println(bean);
+    }
 }
