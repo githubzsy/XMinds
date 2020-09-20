@@ -33,4 +33,6 @@ public class MainTest {
         IAccountService accountService = classPathXmlApplicationContext.getBean("accountService", IAccountService.class);
         accountService.transfer(1,2,100);
     }
+
+
 }
