@@ -16,7 +16,14 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @Slf4j
 public class OrderController {
+    /** 单机配置
     public static final String PAYMENT_URL = "http://localhost:8001";
+     **/
+
+    /**
+     * 集群配置：http://微服务名称
+     */
+    private static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
 
     private final RestTemplate restTemplate;
 
