@@ -1,0 +1,9 @@
+server:
+  port: 80
+
+spring:
+  devtools:
+    restart:
+      # 修复热启动失效的问题
+      poll-interval: 1000ms
+      quiet-period: 999ms
