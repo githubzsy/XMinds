@@ -2,13 +2,15 @@ package com.zhoushiya.springcloud.controller;
 
 import com.zhoushiya.springcloud.entities.CommonResult;
 import com.zhoushiya.springcloud.entities.Payment;
+import com.zhoushiya.springcloud.loadBalancer.MyLoadBalancer;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
 
 /**
  * @author zhoushiya
@@ -18,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class OrderController {
     /** 单机配置
-    public static final String PAYMENT_URL = "http://localhost:8001";
+     public static final String PAYMENT_URL = "http://localhost:8001";
      **/
 
     /**
@@ -28,8 +30,11 @@ public class OrderController {
 
     private final RestTemplate restTemplate;
 
-    public OrderController(RestTemplate restTemplate) {
+    private final MyLoadBalancer loadBalancer;
+
+    public OrderController(RestTemplate restTemplate, MyLoadBalancer loadBalancer) {
         this.restTemplate = restTemplate;
+        this.loadBalancer = loadBalancer;
     }
 
     @GetMapping("/consumer/payment/create")
@@ -47,10 +52,20 @@ public class OrderController {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/uuid", String.class);
     }
 
+    /**
+     * 使用MyLoadBalancer示例
+     * @return
+     */
+    @GetMapping("/consumer/payment/uuid2")
+    public String uuid2() {
+        URI uri = loadBalancer.instance().getUri();
+        return restTemplate.getForObject(uri + "/payment/uuid", String.class);
+    }
+
     @GetMapping("/consumer/payment/getEntity/{id}")
     public ResponseEntity<CommonResult> getPaymentEntity(@PathVariable Long id) {
         ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
-        log.info("******entity:"+entity);
+        log.info("******entity:" + entity);
         return entity;
     }
 }
