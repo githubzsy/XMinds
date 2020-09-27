@@ -1,0 +1,21 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: provider-payment
+  devtools:
+    restart:
+      # 修复热启动失效的问题
+      poll-interval: 1000ms
+      quiet-period: 999ms
+  cloud:
+    zookeeper:
+      # 服务地址
+      connect-string: zhoushiya-centos7:2181
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  # 所有实体的目录
+  type-aliases-package: com.zhoushiya.springcloud.entities
+

@@ -1,0 +1,13 @@
+server:
+  port: 86
+
+spring:
+  application:
+    name: consumer-order
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        # 当前服务名称
+        service-name: ${spring.application.name}
