@@ -75,4 +75,10 @@ public class PaymentController {
         return "******spring cloud with consul:" + serverPort + "\t" + UUID.randomUUID();
     }
 
+    @GetMapping("/payment/timeout/{millis}")
+    public String timeout(@PathVariable int millis) throws InterruptedException {
+        Thread.sleep(millis);
+        return "time over";
+    }
+
 }

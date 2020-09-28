@@ -52,15 +52,15 @@ public class OrderController {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/uuid", String.class);
     }
 
-    /**
-     * 使用MyLoadBalancer示例
-     * @return
-     */
-    @GetMapping("/consumer/payment/uuid2")
-    public String uuid2() {
-        URI uri = loadBalancer.instance().getUri();
-        return restTemplate.getForObject(uri + "/payment/uuid", String.class);
-    }
+//    /**
+//     * 使用MyLoadBalancer示例
+//     * @return
+//     */
+//    @GetMapping("/consumer/payment/uuid2")
+//    public String uuid2() {
+//        URI uri = loadBalancer.instance().getUri();
+//        return restTemplate.getForObject(uri + "/payment/uuid", String.class);
+//    }
 
     @GetMapping("/consumer/payment/getEntity/{id}")
     public ResponseEntity<CommonResult> getPaymentEntity(@PathVariable Long id) {
