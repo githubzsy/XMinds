@@ -17,5 +17,5 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   # 所有实体的目录
-  type-aliases-package: com.zhoushiya.springcloud.entities
+  type-aliases-package: com.zhoushiya.com.zhoushiya.springcloud.entities
 

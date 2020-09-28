@@ -1,0 +1,38 @@
+server:
+  port: 83
+
+spring:
+  devtools:
+    restart:
+      # 修复热启动失效的问题
+      poll-interval: 1000ms
+      quiet-period: 999ms
+  application:
+    name: consumer-hystrix-order
+
+eureka:
+  client:
+    service-url:
+      # 集群版
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7001.com:7001/eureka
+  instance:
+    # 修改实例id
+    instance-id: order83
+    # 访问IP以路径显示
+    prefer-ip-address: true
+
+# 设置feign客户端超时时间（OpenFeign默认支持ribbon）
+ribbon:
+  # 建立连接超时时间
+  ConnectTimeout: 5000
+  # 建立连接后从服务器读取到可用资源的所用时间（默认1000，即1秒）
+  ReadTimeout: 1000
+
+feign:
+  hystrix:
+    enabled: true
+
+logging:
+  level:
+    # feign日志以什么级别监控哪个接口
+    com.zhoushiya.springcloud.service.PaymentService: debug

@@ -22,12 +22,12 @@ public class OrderController {
     }
 
     @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Payment> getPaymentById(@PathVariable Long id){
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
         return paymentService.getPaymentById(id);
     }
 
-    @GetMapping("/consumer/payment/timeout/{millis}")
-    public String timeout(@PathVariable int millis){
-        return paymentService.timeout(millis);
+    @GetMapping("/consumer/payment/waitTime/{millis}")
+    public String waitTime(@PathVariable("millis") long millis){
+        return paymentService.waitTime(millis);
     }
 }

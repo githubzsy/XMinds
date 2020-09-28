@@ -29,6 +29,6 @@ public interface PaymentService {
      * 模拟超时
      * @return
      */
-    @GetMapping("/payment/timeout/{millis}")
-    String timeout(@PathVariable("millis") int millis);
+    @GetMapping("/payment/waitTime/{millis}")
+    String waitTime(@PathVariable("millis") long millis);
 }

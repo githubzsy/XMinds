@@ -26,9 +26,9 @@ eureka:
 # 设置feign客户端超时时间（OpenFeign默认支持ribbon）
 ribbon:
   # 建立连接超时时间
-  ReadTimeout: 5000
-  # 建立连接后从服务器读取到可用资源的所用时间（默认1000，即1秒）
   ConnectTimeout: 5000
+  # 建立连接后从服务器读取到可用资源的所用时间（默认1000，即1秒）
+  ReadTimeout: 1000
 
 logging:
   level:
