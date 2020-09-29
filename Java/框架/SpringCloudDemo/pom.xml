@@ -24,6 +24,8 @@
         <module>cloud-eureka-provider-hystrix-payment8003</module>
         <module>cloud-eureka-consumer-feign-hystrix-order83</module>
         <module>cloud-hystrix-dashboard9001</module>
+        <module>cloud-gateway9527</module>
+        <module>cloud-eureka-gateway9527</module>
     </modules>
 
     <!--统一管理jar包版本-->
