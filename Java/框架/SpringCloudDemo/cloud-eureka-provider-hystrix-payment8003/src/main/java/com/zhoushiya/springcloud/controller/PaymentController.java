@@ -21,4 +21,9 @@ public class PaymentController {
     public String waitTime(@PathVariable("millis") long millis) throws InterruptedException {
         return paymentService.waitTime(millis);
     }
+
+    @GetMapping("/payment/circuit/{id}")
+    public String circuit(@PathVariable("id") int id){
+        return paymentService.circuitBreaker(id);
+    }
 }

@@ -22,7 +22,7 @@ public class PaymentServiceImpl implements PaymentService {
      * 设置兜底方法为waitTime_ExHandler
      * 设置超时时间为3秒钟
      */
-    @HystrixCommand(fallbackMethod = "waitTime_ExHandler", commandProperties = {
+    @HystrixCommand(fallbackMethod = "waitTime_FallbackHandler", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
     })
     public String waitTime(long millis) throws InterruptedException {
@@ -30,8 +30,35 @@ public class PaymentServiceImpl implements PaymentService {
         return "线程：" + Thread.currentThread().getName() + " time over";
     }
 
-    public String waitTime_ExHandler(long millis) {
+    public String waitTime_FallbackHandler(long millis) {
         return "线程：" + Thread.currentThread().getName() + "：您访问的服务暂时不可用，请稍后再来";
+    }
+
+    /**
+     * 服务熔断处理测试，输入负数则出错
+     * @return
+     * @throws InterruptedException
+     */
+    @Override
+    @HystrixCommand(fallbackMethod = "circuitBreaker_Fallback", commandProperties = {
+            // 是否开启断路器
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
+            // 请求次数
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+            // 时间窗口期
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
+            // 失败率达到60%后跳闸
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),
+    })
+    public String circuitBreaker(int i){
+        if(i<0){
+            throw new RuntimeException("不能为负数");
+        }
+        return "circuitBreaker over";
+    }
+
+    public String circuitBreaker_Fallback(int i){
+        return "已出错，请稍后再试";
     }
 
 }
