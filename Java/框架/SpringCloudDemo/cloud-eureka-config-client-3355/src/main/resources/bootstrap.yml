@@ -1,0 +1,38 @@
+server:
+  port: 3355
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      # http://localhost:3344/dev/config-prod.yml
+      # 分支名称
+      label: dev
+      # 配置文件名称
+      name: config
+      # 环境名称
+      profile: prod
+      # 单机版配置
+      # uri: http://localhost:3344
+      # 集群版配置
+      discovery:
+        enabled: true
+        service-id: config-center
+
+eureka:
+  client:
+    service-url:
+      # 集群版
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    # 修改实例id
+    instance-id: config-center3355
+    # 访问IP以路径显示
+    prefer-ip-address: true
+
+# 暴露监控断点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
