@@ -24,10 +24,11 @@
         <module>cloud-eureka-provider-hystrix-payment8003</module>
         <module>cloud-eureka-consumer-feign-hystrix-order83</module>
         <module>cloud-hystrix-dashboard9001</module>
-        <module>cloud-gateway9527</module>
+        <module>cloud-eureka-gateway9527</module>
         <module>cloud-eureka-gateway9527</module>
         <module>cloud-eureka-config-center3344</module>
-        <module>cloud-eureka-config-client-3355</module>
+        <module>cloud-eureka-config-client3355</module>
+        <module>cloud-eureka-config-client3356</module>
     </modules>
 
     <!--统一管理jar包版本-->

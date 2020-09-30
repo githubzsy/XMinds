@@ -9,6 +9,14 @@ spring:
         git:
           uri: https://github.com/githubzsy/springcloud-config.git
 
+
+# 添加rabbitmq支持
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
 eureka:
   client:
     service-url:
@@ -19,3 +27,10 @@ eureka:
     instance-id: config-center3344
     # 访问IP以路径显示
     prefer-ip-address: true
+
+# 暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
