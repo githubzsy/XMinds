@@ -5,6 +5,7 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.*;
 import javax.lang.model.util.ElementScanner8;
 
+import java.util.ArrayList;
 import java.util.EnumSet;
 
 import static java.lang.reflect.Modifier.*;
@@ -81,8 +82,13 @@ public class NameChecker {
          * 判断一个变量是否是常量
          */
         private boolean heuristicallyConstant(VariableElement e) {
+            ArrayList<Integer> integers = new ArrayList<>();
+            integers.add(PUBLIC);
+            integers.add(STATIC);
+            integers.add(FINAL);
+
             if (e.getEnclosingElement().getKind() == INTERFACE) return true;
-            else if (e.getKind() == FIELD && e.getModifiers().containsAll(EnumSet.of(PUBLIC, STATIC, FINAL)))
+            else if (e.getKind() == FIELD && e.getModifiers().containsAll(integers))
                 return true;
             else {
                 return false;

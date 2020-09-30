@@ -11,14 +11,16 @@ package com.zhoushiya.interview.concurrentDemo;
  */
 public class InstructionReOrderTest {
 
-    static Integer a = 0;
-    static Integer b = 0;
-    static Integer x = 0;
-    static Integer y = 0;
+    Integer a = 0;
+    Integer b = 0;
+    Integer x = 0;
+    Integer y = 0;
 
     private void showReOrder() throws InterruptedException {
 
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            a=b=x=y=0;
+
             Thread t1 = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -50,17 +52,12 @@ public class InstructionReOrderTest {
                 System.out.println("第 " + i + "次，x=" + x + ", y=" + y);
                 break;
             }
-            a = b = 0;
-            x = y = 0;
+            Thread.sleep(200);
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         InstructionReOrderTest reOrder = new InstructionReOrderTest();
-        try {
-            reOrder.showReOrder();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        reOrder.showReOrder();
     }
 }
