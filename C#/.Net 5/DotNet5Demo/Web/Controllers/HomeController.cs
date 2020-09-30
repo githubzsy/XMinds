@@ -7,10 +7,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Filters;
 using Web.Models;
 
 namespace Web.Controllers
 {
+    [CustomActionFilter]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -27,11 +29,12 @@ namespace Web.Controllers
             _logger.LogWarning("请求过来了");
 
             #region
-            string user = HttpContext.Session.GetString("User");
-            if (string.IsNullOrEmpty(user))
-            {
-                HttpContext.Session.SetString("User", $"张三-{configuration["port"]}");
-            }
+            //string user = HttpContext.Session.GetString("User");
+            //if (string.IsNullOrEmpty(user))
+            //{
+            //    HttpContext.Session.SetString("User", $"张三-{configuration["port"]}");
+            //}
+            HttpContext.Response.WriteAsync("***Index***");
             ViewBag.User = HttpContext.Session.GetString("User");
             #endregion
             return View();
