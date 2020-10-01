@@ -9,6 +9,13 @@ spring:
       quiet-period: 999ms
   application:
     name: consumer-order
+  # zipkin监控配置
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      # 采样率值介于0到1之间，1则会全部采集
+      probability: 1
 
 eureka:
   client:

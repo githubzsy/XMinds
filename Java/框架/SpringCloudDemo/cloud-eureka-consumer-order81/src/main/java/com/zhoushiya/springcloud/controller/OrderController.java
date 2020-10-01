@@ -68,4 +68,10 @@ public class OrderController {
         log.info("******entity:" + entity);
         return entity;
     }
+
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin(){
+        String result = restTemplate.getForObject(PAYMENT_URL +"/payment/zipkin",String.class);
+        return result;
+    }
 }

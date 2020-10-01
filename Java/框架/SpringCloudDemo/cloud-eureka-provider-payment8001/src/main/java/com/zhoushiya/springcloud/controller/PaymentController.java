@@ -81,4 +81,8 @@ public class PaymentController {
         return "time over";
     }
 
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin(){
+        return "zipkin";
+    }
 }
