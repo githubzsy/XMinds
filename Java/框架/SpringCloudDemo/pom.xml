@@ -29,6 +29,9 @@
         <module>cloud-eureka-config-center3344</module>
         <module>cloud-eureka-config-client3355</module>
         <module>cloud-eureka-config-client3356</module>
+        <module>cloud-eureka-provider-stream-rabbitmq8801</module>
+        <module>cloud-eureka-consumer-stream-rabbitmq8811</module>
+        <module>cloud-eureka-consumer-stream-rabbitmq8812</module>
     </modules>
 
     <!--统一管理jar包版本-->
