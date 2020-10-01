@@ -32,6 +32,9 @@
         <module>cloud-eureka-provider-stream-rabbitmq8801</module>
         <module>cloud-eureka-consumer-stream-rabbitmq8811</module>
         <module>cloud-eureka-consumer-stream-rabbitmq8812</module>
+        <module>cloudalibaba-provider-payment10001</module>
+        <module>cloudalibaba-provider-payment10002</module>
+        <module>cloudalibaba-consumer-order101</module>
     </modules>
 
     <!--统一管理jar包版本-->
@@ -64,6 +67,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!--spring cloud alibaba-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>

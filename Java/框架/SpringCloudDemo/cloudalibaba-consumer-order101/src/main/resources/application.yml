@@ -1,0 +1,27 @@
+server:
+  port: 101
+
+spring:
+  application:
+    name: consumer-order
+  devtools:
+    restart:
+      # 修复热启动失效的问题
+      poll-interval: 1000ms
+      quiet-period: 999ms
+  cloud:
+    # nacos配置
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+# 监控端点全部打开
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 自定义配置，payment提供者地址
+service-url:
+  provider-payment: http://provider-payment

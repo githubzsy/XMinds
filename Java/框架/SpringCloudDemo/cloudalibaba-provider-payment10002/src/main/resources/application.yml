@@ -1,0 +1,23 @@
+server:
+  port: 10002
+
+spring:
+  application:
+    name: provider-payment
+  devtools:
+    restart:
+      # 修复热启动失效的问题
+      poll-interval: 1000ms
+      quiet-period: 999ms
+  cloud:
+    # nacos配置
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+# 监控端点全部打开
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
