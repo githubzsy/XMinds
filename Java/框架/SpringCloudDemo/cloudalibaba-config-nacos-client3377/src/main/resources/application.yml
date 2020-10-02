@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    # active: test
+  # 指定当前环境为dev
+    active: dev
