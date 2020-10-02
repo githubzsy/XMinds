@@ -1,0 +1,24 @@
+server:
+  port: 8401
+spring:
+  application:
+    name: sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.31.3:1111
+    sentinel:
+      transport:
+        # 配置sentinel dashboard地址，8080将会监控8401
+        dashboard: localhost:8080
+        # 8091是sentinel HTTP API Server 的端口号，该应用会使用HttpClient与该端口交互。默认是8719。
+        # 可以在启动sentinel时候指定该端口号 -Dcsp.sentinel.api.port
+        port: 8091
+management:
+  endpoints:
+    # 开启sentinel实时监控
+    sentinel:
+      enabled: true
+    web:
+      exposure:
+        include: "*"
