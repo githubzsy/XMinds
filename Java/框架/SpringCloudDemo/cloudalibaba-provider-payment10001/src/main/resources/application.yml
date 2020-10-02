@@ -13,7 +13,10 @@ spring:
     # nacos配置
     nacos:
       discovery:
-        server-addr: localhost:8848
+        # 尝试使用centos集群版地址
+        server-addr: zhoushiya-centos7:1111
+        # 本机的地址
+        #server-addr: localhost:8848
 
 # 监控端点全部打开
 management:
