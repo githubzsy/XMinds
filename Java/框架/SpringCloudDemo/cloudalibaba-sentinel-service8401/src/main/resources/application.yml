@@ -14,6 +14,15 @@ spring:
         # 8091是sentinel HTTP API Server 的端口号，该应用会使用HttpClient与该端口交互。默认是8719。
         # 可以在启动sentinel时候指定该端口号 -Dcsp.sentinel.api.port
         port: 8091
+      # sentinel持久化配置
+      datasource:
+        dsl:
+          nacos:
+            server-addr: 192.168.31.3:1111
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 management:
   endpoints:
     # 开启sentinel实时监控

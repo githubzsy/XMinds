@@ -1,0 +1,34 @@
+server:
+  port: 93
+
+spring:
+  application:
+    name: nacos-order-consumer
+  devtools:
+    restart:
+      # 修复热启动失效的问题
+      poll-interval: 1000ms
+      quiet-period: 999ms
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:1111
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8091
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# payment微服务地址
+service-url:
+  nacos-payment-provider: http://nacos-payment-provider
+
+# 激活Sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true
