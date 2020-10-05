@@ -39,6 +39,9 @@
         <module>cloudalibaba-sentinel-service8401</module>
         <module>cloudalibaba-provider-payment9003</module>
         <module>cloudalibaba-consumer-order93</module>
+        <module>seata_order_service2001</module>
+        <module>seata_storage_service2011</module>
+        <module>seata_account_service2021</module>
     </modules>
 
     <!--统一管理jar包版本-->

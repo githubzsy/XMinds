@@ -1,0 +1,79 @@
+# 此处为自定义，配置中心和注册中心共同属性，下文引入即可
+nacos:
+  username: nacos
+  password: nacos
+  # 服务分组
+  group: SEATA_GROUP
+  # 配置中心地址
+  server-addr: localhost:1111
+  # 命名空间
+  namespace: public
+  seata:
+    # seata服务中心的微服务名
+    seata-server-name: seata-server
+
+server:
+  port: 2001
+
+spring:
+  application:
+    name: seata-order-service
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.server-addr}
+        namespace: ${nacos.namespace}
+        group: ${nacos.group}
+        username: ${nacos.username}
+        password: ${nacos.password}
+  # 数据源配置
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/seata_order?serverTimezone=GMT%2B8
+      username: root
+      password: welcome
+
+seata:
+  # 开启自动装配
+  enabled: true
+  application-id: ${spring.application.name}
+  # 自动代理数据源
+  # enable-auto-data-source-proxy: true
+  # 读取哪个事务分组
+  # 例如此时会读取 SEATA_GROUP 这个分组下的 service.vgroupMapping.my_test_tx_group 这个属性的值。后面程序运行会找到最终的值对应的集群的seata服务端，进行通讯。
+  tx-service-group: my_test_tx_group
+  # 配置中心设置
+  config:
+    type: nacos
+    nacos:
+      username: ${nacos.username}
+      password: ${nacos.password}
+      server-addr: ${nacos.server-addr}
+      # 读取的配置分组
+      group: ${nacos.group}
+  # 注册中心设置
+  registry:
+    type: nacos
+    nacos:
+      # SEATA服务中心的微服务名，此处与服务端保持一致
+      application: ${nacos.seata.seata-server-name}
+      server-addr: ${nacos.server-addr}
+      username: ${nacos.username}
+      password: ${nacos.password}
+
+# feign配置
+feign:
+  hystrix:
+    enabled: false
+
+# 日志配置
+logging:
+  level:
+    io:
+      seata: info
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
