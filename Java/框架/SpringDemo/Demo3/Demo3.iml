@@ -7,7 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="lib3" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="lib2" level="project" />
+    <orderEntry type="library" name="lib4" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -16,43 +20,6 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/commons-logging-1.1.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/druid-1.1.9.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-beans-5.2.8.RELEASE.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-context-5.2.8.RELEASE.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-core-5.2.8.RELEASE.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-expression-5.2.8.RELEASE.jar!/" />
-        </CLASSES>
-        <JAVADOC>
-          <root url="jar://$MODULE_DIR$/lib/spring-beans-5.2.8.RELEASE-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-context-5.2.8.RELEASE-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-core-5.2.8.RELEASE-javadoc.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-expression-5.2.8.RELEASE-javadoc.jar!/" />
-        </JAVADOC>
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/lib/spring-beans-5.2.8.RELEASE-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-context-5.2.8.RELEASE-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-core-5.2.8.RELEASE-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/spring-expression-5.2.8.RELEASE-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/spring-aop-5.2.8.RELEASE.jar!/" />
-        </CLASSES>
-        <JAVADOC>
-          <root url="jar://$MODULE_DIR$/lib/spring-aop-5.2.8.RELEASE-javadoc.jar!/" />
-        </JAVADOC>
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/lib/spring-aop-5.2.8.RELEASE-sources.jar!/" />
-        </SOURCES>
       </library>
     </orderEntry>
   </component>
