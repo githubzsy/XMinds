@@ -5,3 +5,4 @@ target
 .vs
 bin
 obj
+*.hprof
