@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Demos
+namespace NetCoreDemos
 {
     public class TestInstructionRearrangement
     {

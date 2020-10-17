@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Demos
+namespace NetCoreDemos
 {
     [StructLayout(LayoutKind.Explicit)]
     class Program
@@ -31,9 +31,6 @@ namespace Demos
         }
 
         
-        static void ThreadStaticDemo()
-        {
-
-        }
+       
     }
 }

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CLRDemos\CLRDemos.csproj" />
+    <ProjectReference Include="..\NetCoreDemos\NetCoreDemos.csproj" />
   </ItemGroup>
 
 </Project>

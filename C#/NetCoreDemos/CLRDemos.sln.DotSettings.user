@@ -1,15 +1,8 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=52df43b0_002Da368_002D4760_002Da7a8_002D3ba678ebea7a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestThreadStatic" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestThreadStatic&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSale&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSaleWithSpinLock&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSaleWithLock&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSale1&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSale2&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSaleInterLocked&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSaleInterLocked2&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.UnitTest1.TestLoopSaleWithSpinWait&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.TaskTest.Test1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::5CC6B1DF-B0EA-4528-8028-B79019479079::.NETCoreApp,Version=v3.1::CLRDemosTest.DispatchProxyTest.Test1&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Profiling/Configurations/=2/@EntryIndexedValue">&lt;data&gt;&lt;HostParameters type="LocalHostParameters" /&gt;&lt;Argument type="StandaloneArgument"&gt;&lt;Arguments IsNull="False"&gt;&lt;/Arguments&gt;&lt;FileName IsNull="False"&gt;&lt;/FileName&gt;&lt;WorkingDirectory IsNull="False"&gt;&lt;/WorkingDirectory&gt;&lt;Scope&gt;&lt;ProcessFilters /&gt;&lt;/Scope&gt;&lt;/Argument&gt;&lt;Info type="TimelineInfo" /&gt;&lt;CoreOptions type="CoreOptions"&gt;&lt;CoreTempPath IsNull="False"&gt;&lt;/CoreTempPath&gt;&lt;RemoteEndPoint IsNull="False"&gt;&lt;/RemoteEndPoint&gt;&lt;AdditionalEnvironmentVariables /&gt;&lt;/CoreOptions&gt;&lt;HostOptions type="HostOptions"&gt;&lt;HostTempPath IsNull="False"&gt;&lt;/HostTempPath&gt;&lt;ReprofileDisableReason&gt;LaunchedByReSharperUnitTestRunner&lt;/ReprofileDisableReason&gt;&lt;/HostOptions&gt;&lt;/data&gt;</s:String></wpf:ResourceDictionary>
